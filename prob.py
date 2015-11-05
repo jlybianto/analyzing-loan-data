@@ -22,18 +22,22 @@ for k, v in c.iteritems():
 	print "The frequency of number " + str(k) + " is " + str(float(v) / count_sum) + "."
 
 # Generate and save a box-plot of the data.
+plt.figure()
 plt.boxplot(x)
 plt.savefig("boxplot.png")
 
 # Generate and save a histogram of the data.
+plt.figure()
 plt.hist(x, histtype='bar')
 plt.savefig("histogram.png")
 
 # Generate and save a QQ-plot of the data.
+plt.figure()
 test_data = np.random.normal(size=1000)
 graph1 = stats.probplot(test_data, dist="norm", plot=plt)
 plt.savefig("normalqq.png")
 
+plt.figure()
 test_data2 = np.random.uniform(size=1000)
 graph2 = stats.probplot(test_data2, dist="norm", plot=plt)
 plt.savefig("uniformqq.png")
