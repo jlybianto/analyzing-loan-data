@@ -26,7 +26,7 @@ plt.boxplot(x)
 plt.savefig("boxplot.png")
 
 # Generate and save a histogram of the data.
-plt.histogram(x, histtype='bar')
+plt.hist(x, histtype='bar')
 plt.savefig("histogram.png")
 
 # Generate and save a QQ-plot of the data.
