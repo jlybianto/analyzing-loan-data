@@ -12,3 +12,7 @@ x = [
 # Generate and save a box-plot of the data.
 plt.boxplot(x)
 plt.savefig("boxplot.png")
+
+# Generate and save a histogram of the data.
+plt.histogram(x, histtype='bar')
+plt.savefig("histogram.png")
