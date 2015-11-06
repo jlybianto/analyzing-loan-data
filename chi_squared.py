@@ -1,9 +1,11 @@
 # The scipy.stats module is for a large number of probability distributions and statistical functions.
 # The collections module implements specialized container data types (eg. Counter dict subclass for counting hashable objects)
 # The pandas package is used to fetch and store data in a DataFrame.
+# The matplotlib package is for graphical outputs (eg. box-plot, histogram, QQ-plot).
 import scipy.stats as stats
 import collections
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Collection of data from Amazon AWS.
 loansData = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv')
@@ -13,6 +15,11 @@ loansData.dropna(inplace=True)
 
 # Calculation and analyses of data.
 freq = collections.Counter(loansData['Open.CREDIT.Lines'])
+
+# Generate and show a bar graph of the data.
+plt.figure()
+plt.bar(freq.keys(), freq.values(), width=1)
+plt.show()
 
 # Print output of script.
 print "There are " + str(len(freq)) + " unique number of open credit lines in the data."
