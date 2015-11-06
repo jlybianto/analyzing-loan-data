@@ -8,3 +8,13 @@ loansData = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loan
 
 # Data cleaning by removing rows with null values.
 loansData.dropna(inplace=True)
+
+# Generate and save a box-plot of the data.
+plt.figure()
+loansData.boxplot(column='Amount.Requested')
+plt.savefig("boxplot-amountrequested.png")
+
+# Generate and save a histogram of the data.
+plt.figure()
+loansData.hist(column='Amount.Requested')
+plt.savefig("hist-amountrequested.png")
