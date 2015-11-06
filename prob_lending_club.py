@@ -14,14 +14,14 @@ loansData.dropna(inplace=True)
 # Generate and save a box-plot of the data.
 plt.figure()
 loansData.boxplot(column='Amount.Requested')
-plt.savefig("boxplot-amountrequested.png")
+plt.savefig("amountrequested-boxplot.png")
 
 # Generate and save a histogram of the data.
 plt.figure()
 loansData.hist(column='Amount.Requested')
-plt.savefig("hist-amountrequested.png")
+plt.savefig("amountrequested-hist.png")
 
 # Generate and save a QQ-plot of the data.
 plt.figure()
 graph = stats.probplot(loansData['Amount.Requested'], dist="norm", plot=plt)
-plt.savefig("qqplot-amountrequested.png")
+plt.savefig("amountrequested-qqplot.png")
