@@ -10,3 +10,11 @@ loansData = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loan
 
 # Data cleaning by removing rows with null values.
 loansData.dropna(inplace=True)
+
+# Calculation and analyses of data.
+freq = collections.Counter(loansData['Open.CREDIT.Lines'])
+
+# Print output of script.
+print "There are " + str(len(freq)) + " unique number of open credit lines in the data."
+print "The highest number of open credit lines in the data is " + str(int(max(freq))) + "."
+print "The most frequent number of open credit lines is " + str(int(max(freq, key=freq.get))) + "."
