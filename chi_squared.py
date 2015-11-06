@@ -21,7 +21,16 @@ plt.figure()
 plt.bar(freq.keys(), freq.values(), width=1)
 plt.show()
 
+# Perform a Chi-Squared test to validate distribution of data.
+chi, p = stats.chisquare(freq.values())
+
 # Print output of script.
 print "There are " + str(len(freq)) + " unique number of open credit lines in the data."
 print "The highest number of open credit lines in the data is " + str(int(max(freq))) + "."
 print "The most frequent number of open credit lines is " + str(int(max(freq, key=freq.get))) + "."
+print "The chi-squared value is " + str("%.3f" % chi) + " and the p-value is " + str("%.3f" % p) + "."
+
+if p < 0.05:
+	print "Because the p-value is less than 0.05, the null hypothesis is rejected."
+else:
+	print "Because the p-value is greater than 0.05, the null hypothesis failed to be rejected."
