@@ -1,5 +1,8 @@
 # The pandas package is used to fetch and store data in a DataFrame.
+# The matplotlib package is for graphical outputs (eg. box-plot, histogram, QQ-plot).
 import pandas as pd
+import matplotlib.pyplot as plt
+
 
 # Importing data from Amazon AWS
 loansData = pd.read_csv("https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv")
@@ -11,3 +14,8 @@ loansData = pd.read_csv("https://spark-public.s3.amazonaws.com/dataanalysis/loan
 loansData['Interest.Rate'] = [round((float(i[:-1]) / 100), 4) for i in loansData['Interest.Rate']]
 loansData['Loan.Length'] = [int(month.rstrip(" months")) for month in loansData['Loan.Length']]
 loansData['FICO.Range'] = [int((score.split("-"))[0]) for score in loansData['FICO.Range']]
+
+# Generate a histrogram of the FICO scores.
+plt.figure()
+p = loansData['FICO.Range'].hist()
+plt.show()
