@@ -22,3 +22,28 @@ plt.show()
 
 # Generate a scatter-plot of the data.
 a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10))
+
+# Linear Regression Analysis
+# The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution)
+# The statsmodels is used to find the model coefficients.
+import numpy as np
+import statsmodels.api as sm
+
+# Use clean data from DataFrame to extract columns.
+intrate = loansData['Interest.Rate']
+loanamt = loansData['Amount.Requested']
+fico = loansData['FICO.Range']
+
+# Extraction of a column from a DataFrame is returned as a Series data type.
+y = np.matrix(intrate).transpose()
+x1 = np.matrix(fico).transpose()
+x2 = np.matrix(loanamt).transpose()
+
+# Stack columns together to create an input matrix.
+x = np.column_stack([x1,x2])
+
+# Create the linear model and summarized evaluation of data.
+X = sm.add_constant(x)
+model = sm.OLS(y,X)
+f = model.fit()
+f.summary()
