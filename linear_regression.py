@@ -15,7 +15,10 @@ loansData['Interest.Rate'] = [round((float(i[:-1]) / 100), 4) for i in loansData
 loansData['Loan.Length'] = [int(month.rstrip(" months")) for month in loansData['Loan.Length']]
 loansData['FICO.Range'] = [int((score.split("-"))[0]) for score in loansData['FICO.Range']]
 
-# Generate a histrogram of the FICO scores.
+# Generate a histogram of the FICO scores.
 plt.figure()
 p = loansData['FICO.Range'].hist()
 plt.show()
+
+# Generate a scatter-plot of the data.
+a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10))
