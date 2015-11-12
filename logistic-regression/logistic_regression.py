@@ -2,6 +2,8 @@
 # The statsmodels is used to find the model coefficients.
 import pandas as pd
 import statsmodels.api as sm
+import numpy as np
+import matplotlib.pyplot as plt
 
 # Importing data from Amazon AWS
 loansData = pd.read_csv("https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv")
@@ -29,3 +31,13 @@ logit = sm.Logit(loansData['Int.Rate.Bool'], loansData[ind_vars])
 # Fit the model
 f = logit.fit()
 coeff = f.params
+print coeff
+
+# Obtain user input independent variables FICO score and loan amount
+fico = int(raw_input("Enter FICO Score: "))
+loan = int(raw_input("Enter loan amount: "))
+
+# Define a function that results a probability for the given FICO score and loan amount.
+def logistic_function(fico, loan, coeff):
+	p = 1 / (1 + np.exp( (fico*coeff[0]) + (loan*coeff[1]) + coeff[2] ))
+	return p
