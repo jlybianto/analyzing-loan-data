@@ -22,3 +22,10 @@ loansData['Intercept'] = 1
 
 # Create a list of column names of independent variables.
 ind_vars = ['FICO.Score', 'Amount.Requested', 'Intercept']
+
+# Define the logistic regression model
+logit = sm.Logit(loansData['Int.Rate.Bool'], loansData[ind_vars])
+
+# Fit the model
+f = logit.fit()
+coeff = f.params
