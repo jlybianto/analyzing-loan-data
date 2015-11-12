@@ -17,10 +17,12 @@ loansData['FICO.Range'] = [int((score.split("-"))[0]) for score in loansData['FI
 # Generate a histogram of the FICO scores.
 plt.figure()
 p = loansData['FICO.Range'].hist()
-plt.show()
+plt.savefig("fico-hist.png")
 
 # Generate a scatter-plot of the data.
+plt.figure()
 a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10))
+plt.savefig("scatterplot-matrix.png")
 
 # Linear Regression Analysis
 # The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution)
@@ -45,4 +47,4 @@ x = np.column_stack([x1,x2])
 X = sm.add_constant(x)
 model = sm.OLS(y,X)
 f = model.fit()
-f.summary()
+print f.summary()
