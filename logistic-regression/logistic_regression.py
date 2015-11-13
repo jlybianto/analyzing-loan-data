@@ -31,7 +31,6 @@ logit = sm.Logit(loansData['Int.Rate.Bool'], loansData[ind_vars])
 # Fit the model
 f = logit.fit()
 coeff = f.params
-print coeff
 
 # Obtain user input independent variables FICO score and loan amount
 fico = int(raw_input("Enter FICO Score: "))
@@ -39,5 +38,30 @@ loan = int(raw_input("Enter loan amount: "))
 
 # Define a function that results a probability for the given FICO score and loan amount.
 def logistic_function(fico, loan, coeff):
-	p = 1 / (1 + np.exp( (fico*coeff[0]) + (loan*coeff[1]) + coeff[2] ))
+	p = 1 / (1 + np.exp( (fico * coeff[0]) + (loan * coeff[1]) + coeff[2] ))
 	return p
+
+# Define a function to predict the approval given then FICO score and loan amount
+# Assume 70% probability is required to get the loan approved.
+def predict_approval(fico, loan, coeff):
+	p = logistic_function(fico, loan, coeff)
+	print("Your calculated probability is: " + str(round(p, 3)))
+	print("Assuming a minimum of 0.700 is required to get the loan approved.")
+	if p >= 0.70:
+		print("Your loan request will be approved.")
+	else:
+		print("Sorry, the loan request will not be approved.")
+
+# Execute function to predict approval
+predict_approval(fico, loan, coeff)
+
+# Show figure of the generated logistic function
+plt.figure()
+x = np.arange(550, 950, 1)
+y = 1 / (1 + np.exp( (x * coeff[0]) + (loan * coeff[1]) + coeff[2] ))
+plt.plot(x, y)
+plt.xlabel("FICO Score")
+plt.ylabel("Probability")
+plt.title("Logistic Function of Approving Loan with < 12% Interest Rate")
+plt.legend(["Loan $" + str(loan)], loc="upper left")
+plt.show()
