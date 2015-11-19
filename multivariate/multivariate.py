@@ -8,7 +8,7 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
 # Import CSV file to a DataFrame
-df = pd.read_csv("LoanStats3c.csv")
+df = pd.read_csv("LoanStats3c.csv", skiprows=1)
 
 # Clean data from columns 'int_rate', 'annual_inc' into numerical types to model single variable.
 
