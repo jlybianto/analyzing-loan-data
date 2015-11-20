@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("LoanStats3c.csv", skiprows=1)
 
 # Clean data from columns 'int_rate', 'annual_inc' into numerical types to model single variable.
+df = df[['int_rate', 'annual_inc', 'home_ownership']]
 
 # Model Interest Rate vs. Annual Income
 
