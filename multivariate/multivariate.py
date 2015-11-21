@@ -12,6 +12,11 @@ df = pd.read_csv("LoanStats3c.csv", skiprows=1)
 
 # Clean data from columns 'int_rate', 'annual_inc' into numerical types to model single variable.
 df = df[['int_rate', 'annual_inc', 'home_ownership']]
+df.dropna(inplace=True)
+
+df['int_rate'] = [float(i[:-1]) for i in df['int_rate']]
+
+# Generate a histogram of the Interest Rates, Annual Incomes and Home Ownership.
 
 # Model Interest Rate vs. Annual Income
 
