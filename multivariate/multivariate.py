@@ -17,6 +17,13 @@ df.dropna(inplace=True)
 df['int_rate'] = [float(i[:-1]) for i in df['int_rate']]
 
 # Generate a histogram of the Interest Rates, Annual Incomes and Home Ownership.
+plt.figure()
+df.hist(column='int_rate')
+plt.show()
+
+plt.figure()
+df.hist(column='annual_inc')
+plt.show()
 
 # Model Interest Rate vs. Annual Income
 
