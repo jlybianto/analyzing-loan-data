@@ -26,6 +26,14 @@ df.hist(column='annual_inc')
 plt.show()
 
 # Model Interest Rate vs. Annual Income
+intrate = df['int_rate']
+annualinc = df['annual_inc']
+
+y = np.matrix(intrate).transpose()
+x = np.matrix(annualinc).transpose()
+X = sm.add_constant(x)
+
+model = sm.OLS(y, X).fit()
 
 # Model Interest Rate vs. Annual Income and Home Ownership (without interactions)
 
