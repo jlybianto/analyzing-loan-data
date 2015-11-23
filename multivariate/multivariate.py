@@ -17,6 +17,9 @@ df.dropna(inplace=True)
 df["int_rate"] = [float(i[:-1]) for i in df["int_rate"]]
 df["annual_inc"] = [int(i) for i in df["annual_inc"]]
 
+# Taking the logarithm of annual_inc due to weak correlation
+df["log_annual_inc"] = [np.log10(i) for i in df["annual_inc"]]
+
 # Generate a histogram of the Interest Rates, Annual Incomes and Home Ownership.
 plt.figure()
 df.hist(column="int_rate")
@@ -28,10 +31,10 @@ plt.show()
 
 # Model Interest Rate vs. Annual Income
 intrate = df["int_rate"]
-annualinc = df["annual_inc"]
+logannualinc = df["log_annual_inc"]
 
 y = np.matrix(intrate).transpose()
-x = np.matrix(annualinc).transpose()
+x = np.matrix(logannualinc).transpose()
 X = sm.add_constant(x)
 
 model = sm.OLS(y, X).fit()
