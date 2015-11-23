@@ -11,23 +11,24 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("LoanStats3c.csv", skiprows=1, low_memory=False)
 
 # Clean data from columns 'int_rate', 'annual_inc' into numerical types to model single variable.
-df = df[['int_rate', 'annual_inc', 'home_ownership']]
+df = df[["int_rate", "annual_inc", "home_ownership"]]
 df.dropna(inplace=True)
 
-df['int_rate'] = [float(i[:-1]) for i in df['int_rate']]
+df["int_rate"] = [float(i[:-1]) for i in df["int_rate"]]
+df["annual_inc"] = [int(i) for i in df["annual_inc"]]
 
 # Generate a histogram of the Interest Rates, Annual Incomes and Home Ownership.
 plt.figure()
-df.hist(column='int_rate')
+df.hist(column="int_rate")
 plt.show()
 
 plt.figure()
-df.hist(column='annual_inc')
+df.hist(column="annual_inc")
 plt.show()
 
 # Model Interest Rate vs. Annual Income
-intrate = df['int_rate']
-annualinc = df['annual_inc']
+intrate = df["int_rate"]
+annualinc = df["annual_inc"]
 
 y = np.matrix(intrate).transpose()
 x = np.matrix(annualinc).transpose()
