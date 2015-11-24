@@ -22,11 +22,17 @@ df["log_annual_inc"] = [np.log10(i) for i in df["annual_inc"]]
 
 # Generate a histogram of the Interest Rates, Annual Incomes and Home Ownership.
 plt.figure()
-df.hist(column="int_rate")
+df.hist(column="int_rate", bins=range(0, 30, 1))
+plt.xlabel("Interest Rate (%)")
+plt.ylabel("Count")
+plt.title("Histogram of Borrowers' Interest Rates")
 plt.show()
 
 plt.figure()
-df.hist(column="annual_inc")
+df.hist(column="annual_inc", bins=range(0, 500000, 10000))
+plt.xlabel("Annual Income ($)")
+plt.ylabel("Count")
+plt.title("Histogram of Borrowers' Annual Income")
 plt.show()
 
 # Model Interest Rate vs. Annual Income
