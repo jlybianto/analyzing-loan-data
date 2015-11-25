@@ -45,6 +45,12 @@ X = sm.add_constant(x)
 
 model = sm.OLS(y, X).fit()
 
+plt.figure()
+plt.scatter(df["logannualinc"], df["intrate"], alpha=0.1)
+plt.xlabel("log(Annual Income)")
+plt.ylabel("Interest Rate")
+plt.show()
+
 # Model Interest Rate vs. Annual Income and Home Ownership (without interactions)
 
 # Model Interest Rate vs. Annual Income and Home Ownership (with interactions)
