@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
+import statsmodels.formula.api as smf
 
 # Import CSV file to a DataFrame
 df = pd.read_csv("LoanStats3c.csv", skiprows=1, low_memory=False)
@@ -60,5 +61,11 @@ plt.title("Interest Rates vs. Logarithm of Annual Income")
 plt.show()
 
 # Model Interest Rate vs. Annual Income and Home Ownership (without interactions)
+df["home_encode"] = pd.Categorical(df.home_ownership).labels
+model_noint = smf.ols(formula="int_rate ~ home_encode + log_annual_inc", data=df).fit()
+print model_noint.summary()
 
 # Model Interest Rate vs. Annual Income and Home Ownership (with interactions)
+df["home_encode"] = pd.Categorical(df.home_ownership).labels
+model_int = smf.ols(formula="int_rate ~ home_encode * log_annual_inc", data=df).fit()
+print model_int.summary()
