@@ -44,11 +44,19 @@ x = np.matrix(logannualinc).transpose()
 X = sm.add_constant(x)
 
 model = sm.OLS(y, X).fit()
+print model.summary()
+print "Intercept: ", model.params[0]
+print "Coefficient: ", model.params[1]
+print "P-Value: ", model.pvalues[0]
+print "R-Squared: ", model.rsquared
 
+logspace = np.arange(min(df["log_annual_inc"]), max(df["log_annual_inc"]), 0.5)
 plt.figure()
-plt.scatter(df["logannualinc"], df["intrate"], alpha=0.1)
+plt.scatter(df["log_annual_inc"], df["int_rate"], alpha=0.1)
+plt.plot(model.params[0] + model.params[1] * logspace, "r")
 plt.xlabel("log(Annual Income)")
 plt.ylabel("Interest Rate")
+plt.title("Interest Rates vs. Logarithm of Annual Income")
 plt.show()
 
 # Model Interest Rate vs. Annual Income and Home Ownership (without interactions)
