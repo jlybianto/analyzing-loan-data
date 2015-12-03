@@ -1,6 +1,6 @@
 # The pandas package is used to fetch and store data in a DataFrame.
 # The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution)
-# The statsmodels is used to find the model coefficients.
+# The statsmodels is used to find the model coefficients. Formula holds lower case models.
 # The matplotlib package is for graphical outputs (eg. box-plot, histogram, QQ-plot).
 import pandas as pd
 import numpy as np
@@ -64,8 +64,16 @@ plt.show()
 df["home_encode"] = pd.Categorical(df.home_ownership).labels
 model_noint = smf.ols(formula="int_rate ~ home_encode + log_annual_inc", data=df).fit()
 print model_noint.summary()
+print "Intercept: ", model_noint.params[0]
+print "Coefficient: ", model_noint.params[1]
+print "P-Value: ", model_noint.pvalues[0]
+print "R-Squared: ", model_noint.rsquared
 
 # Model Interest Rate vs. Annual Income and Home Ownership (with interactions)
 df["home_encode"] = pd.Categorical(df.home_ownership).labels
 model_int = smf.ols(formula="int_rate ~ home_encode * log_annual_inc", data=df).fit()
 print model_int.summary()
+print "Intercept: ", model_int.params[0]
+print "Coefficient: ", model_int.params[1]
+print "P-Value: ", model_int.pvalues[0]
+print "R-Squared: ", model_int.rsquared
