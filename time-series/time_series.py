@@ -6,3 +6,6 @@ import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
+
+# Import CSV file to a DataFrame
+df = pd.read_csv("LoanStats3b.csv", skiprows=1, low_memory=False)
