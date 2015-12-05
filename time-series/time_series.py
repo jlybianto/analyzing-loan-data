@@ -23,3 +23,11 @@ plt.gca().grid(True)
 plt.ylabel("Loan Count")
 plt.title("Number of Loans Issued versus Time in Months")
 plt.show()
+
+# Generate Auto-Correlation Function (ACF) plot.
+plt.figure()
+sm.graphics.tsa.plot_acf(issue_d_timeseries)
+plt.ylabel("Auto-Correlation")
+plt.xlabel("Lag")
+plt.title("Auto-Correlation Function")
+plt.show()
