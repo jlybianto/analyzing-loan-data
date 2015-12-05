@@ -31,3 +31,11 @@ plt.ylabel("Auto-Correlation")
 plt.xlabel("Lag")
 plt.title("Auto-Correlation Function")
 plt.show()
+
+# Generate Partial Auto-Correlation Function (PACF) plot.
+plt.figure()
+sm.graphics.tsa.plot_pacf(issue_d_timeseries)
+plt.ylabel("Auto-Correlation")
+plt.xlabel("Lag")
+plt.title("Partial Auto-Correlation Function")
+plt.show()
