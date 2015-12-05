@@ -9,3 +9,16 @@ import matplotlib.pyplot as plt
 
 # Import CSV file to a DataFrame
 df = pd.read_csv("LoanStats3b.csv", skiprows=1, low_memory=False)
+
+# Clean data by dropping empty entities, setting monthly period as index and grouping by month.
+df = df.dropna(subset=["issue_d"])
+index = pd.PeriodIndex(df.issue_d, freq="M") # M for Month
+df = df.set_index(index)
+issue_d_timeseries = df["issue_d"].groupby(df.index).count()
+
+# Generate a plot of the loans issued in each month.
+plt.figure()
+issue_d_timeseries.plot()
+plt.ylabel("Loan Count")
+plt.title("Number of Loans Issued versus Time in Months")
+plt.show()
