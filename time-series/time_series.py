@@ -19,6 +19,7 @@ issue_d_timeseries = df["issue_d"].groupby(df.index).count()
 # Generate a plot of the loans issued in each month.
 plt.figure()
 issue_d_timeseries.plot()
+plt.gca().grid(True)
 plt.ylabel("Loan Count")
 plt.title("Number of Loans Issued versus Time in Months")
 plt.show()
