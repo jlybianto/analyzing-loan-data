@@ -39,3 +39,6 @@ plt.ylabel("Auto-Correlation")
 plt.xlabel("Lag")
 plt.title("Partial Auto-Correlation Function")
 plt.show()
+
+# Conclusion
+print "There seems to be seasonality from the ACF plot."
