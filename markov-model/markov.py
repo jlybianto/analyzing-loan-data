@@ -4,9 +4,9 @@ import pandas as pd
 # Model probabilities of transitioning financial markets.
 df = pd.DataFrame(
 	{
-	"Bull": [0.9, 0.075, 0.025],
-	"Bear": [0.15, 0.8, 0.05],
+	"Bear": [0.8, 0.15, 0.05],
+	"Bull": [0.075, 0.9, 0.025],	
 	"Stagnant": [0.25, 0.25, 0.5]
-	}, index=["Bull", "Bear", "Stagnant"])
+	}, index=["Bear", "Bull", "Stagnant"])
 
 print df
