@@ -21,15 +21,16 @@ print ""
 m = np.mat(df)
 
 # Create a function that will take user input of desired iteration of transition.
-count = int(raw_input("Insert number of transitions: "))
-if count == 0:
+trans = int(raw_input("Insert number of transitions: "))
+if trans == 0:
 	print "No transitions"
 else:
-	m = m ** (int(count) + 1)
-	m = pd.DataFrame(m, index=["Bear", "Bull", "Stagnant"], columns=["Bear", "Bull", "Stagnant"])
+	m_input = m ** (int(trans) + 1)
+	m_input = pd.DataFrame(m, index=["Bear", "Bull", "Stagnant"], columns=["Bear", "Bull", "Stagnant"])
 	print ""
-	print "State of financial markets Markov model after " + str(count) + " transitions:"
+	print "State of financial markets Markov model after " + str(trans) + " transitions:"
 	print ""
-	print m
+	print m_input
 
 # Evaluation
+print "The model shows that the market have the highest probability of being bullish in the long run."
