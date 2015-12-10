@@ -26,11 +26,12 @@ if trans == 0:
 	print "No transitions"
 else:
 	m_input = m ** (int(trans) + 1)
-	m_input = pd.DataFrame(m, index=["Bear", "Bull", "Stagnant"], columns=["Bear", "Bull", "Stagnant"])
+	m_input = pd.DataFrame(m_input, index=["Bear", "Bull", "Stagnant"], columns=["Bear", "Bull", "Stagnant"])
 	print ""
 	print "State of financial markets Markov model after " + str(trans) + " transitions:"
 	print ""
 	print m_input
 
 # Evaluation
+print ""
 print "The model shows that the market have the highest probability of being bullish in the long run."
