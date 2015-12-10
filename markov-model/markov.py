@@ -1,5 +1,7 @@
 # The pandas package is used to fetch and store data in a DataFrame.
+# The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution).
 import pandas as pd
+import numpy as np
 
 # Model probabilities of transitioning financial markets.
 df = pd.DataFrame(
@@ -11,5 +13,13 @@ df = pd.DataFrame(
 
 print df
 
-# Need to convert DataFrame to an array or matrix
-# Create a function that will take user input of desired iteration of transition
+# Convert DataFrame to an array or matrix for computations.
+m = np.mat(df)
+
+# Create a function that will take user input of desired iteration of transition.
+count = raw_input("Insert number of transitions: ")
+if count == 0:
+	print "No transitions"
+else:
+	m = m ** (int(count) + 1)
+	print m
