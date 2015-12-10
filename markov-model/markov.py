@@ -31,3 +31,5 @@ else:
 	print "State of financial markets Markov model after " + str(count) + " transitions:"
 	print ""
 	print m
+
+# Evaluation
