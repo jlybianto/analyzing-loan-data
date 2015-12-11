@@ -27,14 +27,14 @@ df.hist(column="int_rate", bins=range(0, 30, 1))
 plt.xlabel("Interest Rate (%)")
 plt.ylabel("Count")
 plt.title("Histogram of Borrowers' Interest Rates")
-plt.show()
+plt.savefig("int-hist.png")
 
 plt.figure()
 df.hist(column="annual_inc", bins=range(0, 500000, 10000))
 plt.xlabel("Annual Income ($)")
 plt.ylabel("Count")
 plt.title("Histogram of Borrowers' Annual Income")
-plt.show()
+plt.savefig("inc-hist.png")
 
 # Model Interest Rate vs. Annual Income
 intrate = df["int_rate"]
@@ -58,7 +58,7 @@ plt.plot(model.params[0] + model.params[1] * logspace, "r")
 plt.xlabel("log(Annual Income)")
 plt.ylabel("Interest Rate")
 plt.title("Interest Rates vs. Logarithm of Annual Income")
-plt.show()
+plt.savefig("int-inc-plot.png")
 
 # Model Interest Rate vs. Annual Income and Home Ownership (without interactions)
 df["home_encode"] = pd.Categorical(df.home_ownership).labels
