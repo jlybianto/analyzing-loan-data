@@ -50,5 +50,29 @@ for n in range(len(issue_d_time) - 1):
 
 issue_d_dif = pd.Series(issue_d_dif)
 
+# Generate a plot of the difference of loans issued in each month.
+plt.figure()
+issue_d_dif.plot()
+plt.gca().grid(True)
+plt.ylabel("Differenced Loan Count")
+plt.title("Differenced Number of Loans Issued versus Time in Months")
+plt.show()
+
+# Generate Auto-Correlation Function (ACF) plot.
+plt.figure()
+sm.graphics.tsa.plot_acf(issue_d_dif)
+plt.ylabel("Auto-Correlation")
+plt.xlabel("Lag")
+plt.title("Differenced Auto-Correlation Function")
+plt.show()
+
+# Generate Partial Auto-Correlation Function (PACF) plot.
+plt.figure()
+sm.graphics.tsa.plot_pacf(issue_d_dif)
+plt.ylabel("Auto-Correlation")
+plt.xlabel("Lag")
+plt.title("Differenced Partial Auto-Correlation Function")
+plt.show()
+
 # Conclusion
 print "There seems to be seasonality from the ACF plot."
