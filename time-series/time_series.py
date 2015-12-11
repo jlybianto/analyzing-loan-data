@@ -22,7 +22,7 @@ issue_d_time.plot()
 plt.gca().grid(True)
 plt.ylabel("Loan Count")
 plt.title("Number of Loans Issued versus Time in Months")
-plt.show()
+plt.savefig("loan-issued-time.png")
 
 # Generate Auto-Correlation Function (ACF) plot.
 plt.figure()
@@ -30,7 +30,7 @@ sm.graphics.tsa.plot_acf(issue_d_time)
 plt.ylabel("Auto-Correlation")
 plt.xlabel("Lag")
 plt.title("Auto-Correlation Function")
-plt.show()
+plt.savefig("loan-issued-acf.png")
 
 # Generate Partial Auto-Correlation Function (PACF) plot.
 plt.figure()
@@ -38,7 +38,7 @@ sm.graphics.tsa.plot_pacf(issue_d_time)
 plt.ylabel("Auto-Correlation")
 plt.xlabel("Lag")
 plt.title("Partial Auto-Correlation Function")
-plt.show()
+plt.savefig("loan-issued-pacf.png")
 
 # ARIMA model assumes that the time-series is stationary.
 # This means that the mean, variance and autocorrelation does not change overtime.
@@ -56,7 +56,7 @@ issue_d_dif.plot()
 plt.gca().grid(True)
 plt.ylabel("Differenced Loan Count")
 plt.title("Differenced Number of Loans Issued versus Time in Months")
-plt.show()
+plt.savefig("loan-diff-time.png")
 
 # Generate Auto-Correlation Function (ACF) plot.
 plt.figure()
@@ -64,7 +64,7 @@ sm.graphics.tsa.plot_acf(issue_d_dif)
 plt.ylabel("Auto-Correlation")
 plt.xlabel("Lag")
 plt.title("Differenced Auto-Correlation Function")
-plt.show()
+plt.savefig("loan-diff-acf.png")
 
 # Generate Partial Auto-Correlation Function (PACF) plot.
 plt.figure()
@@ -72,7 +72,7 @@ sm.graphics.tsa.plot_pacf(issue_d_dif)
 plt.ylabel("Auto-Correlation")
 plt.xlabel("Lag")
 plt.title("Differenced Partial Auto-Correlation Function")
-plt.show()
+plt.savefig("loan-diff-pacf.png")
 
 # Conclusion
 print "There seems to be seasonality from the ACF plot."
