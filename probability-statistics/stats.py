@@ -1,7 +1,15 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
 # The pandas package is used to fetch and store data in a DataFrame.
 # The scipy package is used for statistical methods.
 import pandas as pd
 from scipy import stats
+
+# ----------------
+# OBTAIN DATA
+# ----------------
 
 # Data collected from http://lib.stat.cmu.edu/DASL/Datafiles/AlcoholandTobacco.html
 data = '''Region,Alcohol,Tobacco
@@ -17,6 +25,10 @@ Wales,5.27,3.53
 Scotland,6.08,4.51
 Northern Ireland,4.02,4.56'''
 
+# ----------------
+# PROFILE DATA
+# ----------------
+
 # Data to be organized into a list of lists.
 data = data.split("\n")
 data = [i.split(",") for i in data]
@@ -29,6 +41,10 @@ df = pd.DataFrame(data_rows, columns=column_names)
 # Conversion of data type so that it can be calculated.
 df['Alcohol'] = df['Alcohol'].astype(float)
 df['Tobacco'] = df['Tobacco'].astype(float)
+
+# ----------------
+# ANALYZE DATA
+# ----------------
 
 # Analyze the data in terms of central tendency and variability.
 alc_mean = round(df['Alcohol'].mean(), 2)

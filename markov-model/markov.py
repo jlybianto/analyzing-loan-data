@@ -1,7 +1,15 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
 # The pandas package is used to fetch and store data in a DataFrame.
 # The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution).
 import pandas as pd
 import numpy as np
+
+# ----------------
+# ANALYZE DATA
+# ----------------
 
 # Model probabilities of transitioning financial markets.
 df = pd.DataFrame(

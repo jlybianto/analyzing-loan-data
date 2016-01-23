@@ -1,3 +1,7 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
 # The pandas package is used to fetch and store data in a DataFrame.
 # The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution)
 # The statsmodels is used to find the model coefficients. Formula holds lower case models.
@@ -8,8 +12,16 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
 
+# ----------------
+# OBTAIN DATA
+# ----------------
+
 # Import CSV file to a DataFrame
 df = pd.read_csv("LoanStats3c.csv", skiprows=1, low_memory=False)
+
+# ----------------
+# PROFILE DATA
+# ----------------
 
 # Clean data from columns 'int_rate', 'annual_inc' into numerical types to model single variable.
 df = df[["int_rate", "annual_inc", "home_ownership"]]
@@ -20,6 +32,10 @@ df["annual_inc"] = [int(i) for i in df["annual_inc"]]
 
 # Taking the logarithm of annual_inc due to weak correlation
 df["log_annual_inc"] = [np.log10(i) for i in df["annual_inc"]]
+
+# ----------------
+# VISUALIZE DATA
+# ----------------
 
 # Generate a histogram of the Interest Rates, Annual Incomes and Home Ownership.
 plt.figure()
@@ -35,6 +51,10 @@ plt.xlabel("Annual Income ($)")
 plt.ylabel("Count")
 plt.title("Histogram of Borrowers' Annual Income")
 plt.savefig("inc-hist.png")
+
+# ----------------
+# MODEL DATA
+# ----------------
 
 # Model Interest Rate vs. Annual Income
 intrate = df["int_rate"]
