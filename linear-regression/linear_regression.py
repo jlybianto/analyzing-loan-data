@@ -1,10 +1,22 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
 # The pandas package is used to fetch and store data in a DataFrame.
 # The matplotlib package is for graphical outputs (eg. box-plot, histogram, QQ-plot).
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# ----------------
+# OBTAIN DATA
+# ----------------
+
 # Importing data from Amazon AWS
 loansData = pd.read_csv("https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv")
+
+# ----------------
+# PROFILE DATA
+# ----------------
 
 # Clean data from columns 'Interest.Rate', 'Loan.Length', 'FICO.Range' into numerical types.
 # Convert interest rate from 'xx.xx%' to '0.xxxx'
@@ -13,6 +25,10 @@ loansData = pd.read_csv("https://spark-public.s3.amazonaws.com/dataanalysis/loan
 loansData['Interest.Rate'] = [round((float(i[:-1]) / 100), 4) for i in loansData['Interest.Rate']]
 loansData['Loan.Length'] = [int(month.rstrip(" months")) for month in loansData['Loan.Length']]
 loansData['FICO.Range'] = [int((score.split("-"))[0]) for score in loansData['FICO.Range']]
+
+# ----------------
+# VISUALIZE DATA
+# ----------------
 
 # Generate a histogram of the FICO scores.
 plt.figure()
@@ -23,6 +39,10 @@ plt.savefig("fico-hist.png")
 plt.figure()
 a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10))
 plt.savefig("scatterplot-matrix.png")
+
+# ----------------
+# MODEL DATA
+# ----------------
 
 # Linear Regression Analysis
 # The numpy package is for scientific computing and container of generic data (used for generating a continuous distribution)

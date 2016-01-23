@@ -1,3 +1,7 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
 # The pandas package is used to fetch and store data in a DataFrame.
 # The statsmodels is used to find the model coefficients.
 import pandas as pd
@@ -5,8 +9,16 @@ import statsmodels.api as sm
 import numpy as np
 import matplotlib.pyplot as plt
 
+# ----------------
+# OBTAIN DATA
+# ----------------
+
 # Importing data from Amazon AWS
 loansData = pd.read_csv("https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv")
+
+# ----------------
+# PROFILE DATA
+# ----------------
 
 # Clean data from columns 'Interest.Rate', 'Loan.Length', 'FICO.Range' into numerical types.
 # Convert interest rate from 'xx.xx%' to 'xx.xx'
@@ -18,6 +30,10 @@ loansData['FICO.Score'] = [int((score.split("-"))[0]) for score in loansData['FI
 
 # Convert interest rate to boolean (T/F) figures. (0) when the rate is less than 12.00% and (1) otherwise.
 loansData['Int.Rate.Bool'] = [0 if i < 12.00 else 1 for i in loansData['Interest.Rate']]
+
+# ----------------
+# ANALYZE DATA
+# ----------------
 
 # Add a column with constant intercept of 1.0 for statsmodels compatibility.
 loansData['Intercept'] = 1
@@ -54,6 +70,10 @@ def predict_approval(fico, loan, coeff):
 
 # Execute function to predict approval
 predict_approval(fico, loan, coeff)
+
+# ----------------
+# VISUALIZE DATA
+# ----------------
 
 # Show figure of the generated logistic function
 plt.figure()
