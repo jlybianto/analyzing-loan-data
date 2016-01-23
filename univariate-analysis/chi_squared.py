@@ -1,3 +1,7 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
 # The scipy.stats module is for a large number of probability distributions and statistical functions.
 # The collections module implements specialized container data types (eg. Counter dict subclass for counting hashable objects)
 # The pandas package is used to fetch and store data in a DataFrame.
@@ -7,8 +11,16 @@ import collections
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# ----------------
+# OBTAIN DATA
+# ----------------
+
 # Collection of data from Amazon AWS.
 loansData = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv')
+
+# ----------------
+# PROFILE DATA
+# ----------------
 
 # Data cleaning by removing rows with null values.
 loansData.dropna(inplace=True)
@@ -16,10 +28,18 @@ loansData.dropna(inplace=True)
 # Calculation and analyses of data.
 freq = collections.Counter(loansData['Open.CREDIT.Lines'])
 
+# ----------------
+# VISUALIZE DATA
+# ----------------
+
 # Generate and show a bar graph of the data.
 plt.figure()
 plt.bar(freq.keys(), freq.values(), width=1)
 plt.show()
+
+# ----------------
+# ANALYZE DATA
+# ----------------
 
 # Perform a Chi-Squared test to validate distribution of data.
 chi, p = stats.chisquare(freq.values())
